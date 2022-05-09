@@ -1,4 +1,17 @@
-<footer>
+@extends('layouts.public')
+
+@section('head')
+
+@endsection
+
+@section('content')
+ 
+  @include('pages.contact.include._getintouch_beginner')
+  @include('pages.contact.include._startcontact')
+  @include('pages.contact.include._googlemap')
+  @include('partials._footer')
+  
+  <footer>
         <!--Footer top -->
         <div class="footer-top overlay section-back-image-2" data-background="assets/img/bg/slide1.jpg">
             <div class="auto-container">
@@ -146,3 +159,5 @@
         </div>
 		
     </footer>
+
+@endsection

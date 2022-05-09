@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPagesController;
+use App\Http\Controllers\InteractionsController;
 use App\Http\Controllers\PublicPagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PublicPagesController::class, 'home'])->name('home');
+Route::get('/contact', [PublicPagesController::class, 'contact'])->name('contact');
+Route::post('/contact', [InteractionsController::class, 'contactStore'])->name('contact.store');
+Route::get('/about', [PublicPagesController::class, 'about'])->name('about');
+
 
 Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home');
 
