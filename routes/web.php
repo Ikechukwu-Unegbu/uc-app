@@ -20,7 +20,8 @@ Route::get('/', [PublicPagesController::class, 'home'])->name('home');
 Route::get('/contact', [PublicPagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [InteractionsController::class, 'contactStore'])->name('contact.store');
 Route::get('/about', [PublicPagesController::class, 'about'])->name('about');
-
+Route::get('/faq', [PublicPagesController::class, 'faq'])->name('faq.index');
+Route::get('/data', [PublicPagesController::class, 'data'])->name('data.index');
 
 Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home');
 

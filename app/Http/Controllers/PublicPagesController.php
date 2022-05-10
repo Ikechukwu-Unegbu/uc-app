@@ -17,4 +17,12 @@ class PublicPagesController extends Controller
     public function about(){
         return view('pages.about.index');
     }
+
+    public function faq(){
+        return view('pages.faq.index');
+    }
+
+    public function data(){
+        return view('pages.data.index');
+    }
 }
