@@ -6,5 +6,6 @@
 
 @section('content')
 
+  @include('pages.profile._more')
 
 @endsection
