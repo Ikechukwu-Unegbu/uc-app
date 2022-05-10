@@ -5,6 +5,7 @@ use App\Http\Controllers\InteractionsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicPagesController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::get('/faq', [PublicPagesController::class, 'faq'])->name('faq.index');
 Route::get('/data', [PublicPagesController::class, 'data'])->name('data.index');
 
 Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.index');
+Route::post('/settings', [ProfileController::class, 'settingsStore'])->name('settings.store')->middleware(['auth']);
+Route::post('/password/retool', [ProfileController::class, 'passwordReset'])->name('password.new')->middleware(['auth']);
 
 
 Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home');
