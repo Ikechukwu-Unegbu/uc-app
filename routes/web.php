@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPagesController;
 use App\Http\Controllers\InteractionsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicPagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,9 @@ Route::get('/about', [PublicPagesController::class, 'about'])->name('about');
 Route::get('/faq', [PublicPagesController::class, 'faq'])->name('faq.index');
 Route::get('/data', [PublicPagesController::class, 'data'])->name('data.index');
 
+Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.index');
+
+
 Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home');
 
 // Route::get('/', function () {
@@ -30,7 +34,7 @@ Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home');
 // });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.profile.index');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
