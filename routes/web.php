@@ -31,6 +31,9 @@ Route::post('/password/retool', [ProfileController::class, 'passwordReset'])->na
 
 
 Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home');
+Route::get('/panel/users', [AdminPagesController::class, 'users'])->name('admin.users');
+Route::get('/panel/packages', [AdminPagesController::class, 'packages'])->name('admin.packages');
+
 
 // Route::get('/', function () {
 //     return view('welcome');

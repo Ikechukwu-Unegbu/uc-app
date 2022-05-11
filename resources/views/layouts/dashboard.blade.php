@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('dashboard/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+    @yield('head')
 </head>
 
 <body id="page-top">
@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-      
+      @include('dashboard\partials\_sidebarnav')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -37,7 +37,7 @@
             <!-- Main Content -->
            
             <!-- End of Main Content -->
-
+              @yield('content')
             <!-- Footer -->
             @include('dashboard.partials._footer')
             <!-- End of Footer -->

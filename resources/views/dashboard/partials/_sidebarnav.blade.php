@@ -79,6 +79,8 @@
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
+            <a class="collapse-item" href="{{route('admin.users')}}">Users</a>
+            <a class="collapse-item" href="{{route('admin.packages')}}">Packages</a>
             <a class="collapse-item" href="login.html">Login</a>
             <a class="collapse-item" href="register.html">Register</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
@@ -114,8 +116,8 @@
 
 <!-- Sidebar Message -->
 <div class="sidebar-card d-none d-lg-flex">
-    <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-    <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+    <img class="sidebar-card-illustration mb-2" src="{{asset('dashboard/img/undraw_rocket.svg')}}" alt="...">
+    <p class="text-center mb-2"><strong>Admin Pro</strong> is packed with premium features, components, and more!</p>
     <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
 </div>
 
