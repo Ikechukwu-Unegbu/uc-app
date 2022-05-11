@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->decimal('interest');
+            $table->string('title');
+            $table->tinyText('description');
+            $table->string('img');
             $table->timestamps();
         });
     }
