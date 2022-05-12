@@ -26,9 +26,8 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         
         return view('pages.settings.settings')
-                                        ->with('user', $user)
-                                        ->with('wallet', $wallet);
-
+                                        ->with('user', $user);
+                                        // ->with('wallet', $wallet);
     }
 
     public function resetPassword(Request $request){

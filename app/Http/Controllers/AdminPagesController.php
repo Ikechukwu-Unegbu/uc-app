@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Contact;
 use App\Models\Interaction;
 use App\Models\Offer;
 use App\Models\User;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
@@ -69,6 +69,43 @@ class AdminPagesController extends Controller
                 
         }
         FacadesSession::flash('success', 'New Offer Created');
+        return redirect()->back();
+    }
+
+    public function address(){
+        $add = Address::all();
+        return view('dashboard.address.address')
+            ->with('adds', $add);
+    }
+
+    public function addressStore(Request $request){
+        //var_dump($request->all());die;
+        $request->validate([
+            'coin_abb'=>'required|string',
+            'address'=>'required|string'
+        ]);
+
+        $address = new Address();
+        $address->coin_abb = $request->coin_abb;
+        $address->addrs = $request->address;
+        $address->save();
+
+        FacadesSession::flash('success', 'Wallet Set');
+        return redirect()->back();
+    }
+
+    public function editAddress(Request $request, $target){
+        $add = Address::find($target);
+        $add->coin_abb = $request->coin_abb;
+        $add->address = $request->address;
+        $add->save();
+        FacadesSession::flash('success', 'Edited');
+        return redirect()->back();
+    }
+
+    public function deleteAddress($target){
+        $add = Address::find($target)->delete();
+        FacadesSession::flash('success', 'Deleted');
         return redirect()->back();
     }
 }
