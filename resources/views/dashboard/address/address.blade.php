@@ -1,12 +1,17 @@
 @extends('layouts.dashboard')
 
 @section('head')
-
+<style>
+  footer{
+    display: block;
+    bottom: 0;
+  }
+</style>
 @endsection 
 
 @section('content')
 @include('dashboard\partials\_top_searchbar')
-<div class="container" style="min-height: 100vh;">
+<div style="width: 100%; display:block;" class="container" style="min-height: 100vh;">
 
   <table class="table">
     <thead class="mb-4">
@@ -20,7 +25,7 @@
       <tr>
         <th scope="col">#id</th>
         <th scope="col">name</th>
-        <th scope="col">no. of views</th>
+        <th scope="col">Address</th>
         <th scope="col">Handle</th>
       </tr>
     </thead>
@@ -31,9 +36,9 @@
         <td>{{$add->coin_abb}}</td>
         <td>{{$add->addrs}}</td>
         <td>
-          <a href="" t class="btn btn-primary btn-sm">Small button</a>
-          <a href="" t class="btn btn-secondary btn-sm">Small button</a>
-          <a href="" t class="btn btn-secondary btn-sm">Small button</a>
+          <a href="" t class="btn btn-primary btn-sm">Edit</a>
+          <a href="" t class="btn btn-secondary btn-sm">Delete</a>
+          <!-- <a href="" t class="btn btn-secondary btn-sm">Small button</a> -->
         </td>
       </tr>
       @endforeach
@@ -72,10 +77,10 @@
           </div>
         </form>
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
