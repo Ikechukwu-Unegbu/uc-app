@@ -2,16 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offer;
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
+    public function index(){
+        $user = User::find(Auth::user()->id);
+        $wallet = Wallet::where('user_id', '=', $user->id)->first();
+        $offers = Offer::all();
+        return view('pages.profile.index')
+            ->with('wallet', $wallet)
+            ->with('user', $user)
+            ->with('offers', $offers);
+    }
+
+
     public function settings(){
         $user = User::find(Auth::user()->id);
-        return view('pages.settings.settings')->with('user', $user);
+        
+        return view('pages.settings.settings')
+                                        ->with('user', $user)
+                                        ->with('wallet', $wallet);
+
     }
 
     public function resetPassword(Request $request){

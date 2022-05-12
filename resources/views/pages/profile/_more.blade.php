@@ -1,12 +1,15 @@
 <div style="margin-top: 5rem;" class="container">
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="card personal-card" style="width: 18rem;">
+    <div class="card-btns">
+      <button class="btn">
+        Withdraw
+      </button>
+      <button class="btn btn-fund" data-toggle="modal" data-target="#exampleModal">
+        Fund
+      </button>
+    </div>
+    <h3 class="card-title text-center">Your Wallet</h3>
+    <span class="text-center"><b>{{$wallet->balace}}</b></span>
   </div>
 </div>
 
-
-</div>

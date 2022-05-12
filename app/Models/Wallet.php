@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-
-class Offer extends Model
+// use App\Models\Wallet;
+class Wallet extends Model
 {
     use HasFactory;
 

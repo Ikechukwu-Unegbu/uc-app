@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminPagesController;
 use App\Http\Controllers\InteractionsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicPagesController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -41,14 +43,9 @@ Route::post('/panel/offers', [AdminPagesController::class, 'offers_new'])->name(
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
-Route::get('/dashboard', function () {
-    return view('pages.profile.index');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});

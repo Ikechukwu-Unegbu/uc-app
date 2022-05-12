@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Wallet;
+use App\Models\Offer;
+
+
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -41,4 +45,15 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function wallet(){
+        return $this->hasOne(Wallet::class);
+    }
+
+    public function offers(){
+        return $this->hasMany(Offer::class);
+    }
+
+    
+
 }

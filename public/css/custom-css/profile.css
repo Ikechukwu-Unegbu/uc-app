@@ -1,0 +1,22 @@
+.personal-card{
+  padding: 1rem;
+}
+.personal-card .btn{
+  width: 6rem;
+}
+.card-btns{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.offers{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+.offers .card-img{
+  width: 100%;
+  height: 15rem;
+}
