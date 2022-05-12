@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+use TCG\Voyager\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::post('/contact', [InteractionsController::class, 'contactStore'])->name('
 Route::get('/about', [PublicPagesController::class, 'about'])->name('about');
 Route::get('/faq', [PublicPagesController::class, 'faq'])->name('faq.index');
 Route::get('/data', [PublicPagesController::class, 'data'])->name('data.index');
+Route::get('/team', [PublicPagesController::class, 'team'])->name('team');
+Route::get('/blog', [PublicPagesController::class, 'blog'])->name('blog');
+
+
 
 Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.index');
 Route::post('/settings', [ProfileController::class, 'settingsStore'])->name('settings.store')->middleware(['auth']);

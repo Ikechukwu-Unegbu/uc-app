@@ -18,7 +18,10 @@ class AdminPagesController extends Controller
 
     public function users(){
         $users = User::paginate(50);
-        return view('dashboard.users.index')->with('users', $users);
+        $total = count(User::all());
+//        var_dump($total);die;
+        return view('dashboard.users.index')->with('users', $users)
+                            ->with('total', $total);
     }
 
     public function packages(){

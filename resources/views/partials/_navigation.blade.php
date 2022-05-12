@@ -15,13 +15,14 @@
 									</li>
 									<li class="dropdown"><a class="nav-link" href="#">Pages</a>
 										<ul class="dropdown-menu">
-											<li><a href="about.html">About Us</a></li>
-											<li><a href="team.html">Our Team</a></li>
-											<li><a href="single-team.html">Team Single</a></li>
-											<li><a href="gallery.html">Gallery</a></li>
+											<li><a href="/about">About Us</a></li>
+											<li><a href="/team">Our Team</a></li>
+											<!-- <li><a href="single-team.html">Team Single</a></li> -->
+											<!-- <li><a href="gallery.html">Gallery</a></li> -->
 											<li><a href="pricing.html">Our Pricing</a></li>
-											<li><a href="faq.html">FAQ</a></li>
-											<li><a href="error.html">404</a></li>
+											<li><a href="/faq">FAQ</a></li>
+
+											<!-- <li><a href="error.html">404</a></li> -->
 										</ul>
 									</li>
 									<li class="dropdown"><a href="service.html" class="nav-link">Services</a>
@@ -33,29 +34,29 @@
 											<li><a href="single-service.html">Cryptocurrency</a></li>
 										</ul>
 									</li>
-									<li class="dropdown"><a href="service.html" class="nav-link">Shop</a>
+									<!-- <li class="dropdown"><a href="service.html" class="nav-link">Shop</a>
 										<ul class="dropdown-menu">
 											<li><a href="shop.html">Our Products</a></li>
 											<li><a href="single-product.html">Product Details</a></li>
 											<li><a href="shop-cart.html">Shopping Cart</a></li>
 											<li><a href="shop-checkout.html">Shopping Checkout</a></li>
 										</ul>
-									</li>
+									</li> -->
 									<li class="dropdown"><a href="buy.html" class="nav-link">Coin</a>
 										<ul class="dropdown-menu">
-											<li><a href="buy.html">Buy & Sell</a></li>
-											<li><a href="data.html">Analyze</a></li>
-											<li><a href="wallet.html">wallet</a></li>
-											<li><a href="exchange.html">Exchange</a></li>
+											<!-- <li><a href="buy.html">Buy & Sell</a></li> -->
+											<li><a href="/data">Analyze</a></li>
+											<li><a href="/wallet">wallet</a></li>
+											<!-- <li><a href="exchange.html">Exchange</a></li> -->
 										</ul>
 									</li>
 									<li class="dropdown"><a href="blog.html" class="nav-link">News</a>
 										<ul class="dropdown-menu">
-											<li><a href="blog.html">Latest News</a></li>
-											<li><a href="single-blog.html">Single News</a></li>
+											<li><a href="/blog">Latest News</a></li>
+											<!-- <li><a href="single-blog.html">Single News</a></li> -->
 										</ul>
 									</li>
-									<li><a href="contact.html" class="nav-link">Contact</a></li>
+									<li><a href="/contact" class="nav-link">Contact</a></li>
 								</ul>
 							</nav>
 						</div>

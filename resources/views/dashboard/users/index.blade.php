@@ -10,7 +10,7 @@
 
   <table class="table">
     <thead>
-      <h2 class="text-center">User Table</h2>
+      <h2 class="text-center">User Table ({{$total}})</h2>
     </thead>
     <thead>
       <tr>

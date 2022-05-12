@@ -10,6 +10,10 @@ class PublicPagesController extends Controller
         return view('pages.home.index');
     }
 
+    public function blog(){
+        return view('pages.blog.index');
+    }
+
     public function contact(){
         return view('pages.contact.index');
     }
@@ -24,5 +28,9 @@ class PublicPagesController extends Controller
 
     public function data(){
         return view('pages.data.index');
+    }
+
+    public function team(){
+        return view('pages.team.index');
     }
 }
