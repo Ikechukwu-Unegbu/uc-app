@@ -6,7 +6,9 @@ use App\Models\Contact;
 use App\Models\Interaction;
 use App\Models\Offer;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class AdminPagesController extends Controller
 {
@@ -31,5 +33,42 @@ class AdminPagesController extends Controller
     public function offers(){
         $offers = Offer::paginate(30);
         return view('dashboard.offers.index')->with('offers', $offers);
+    }
+
+    public function offers_new(Request $request){
+        //var_dump($request->all());die;
+        $request->validate([
+            'name'=>'required|string',
+            'title'=>'required|string',
+            'description'=>'required|string',
+            'image'=>'required',
+            'interest'=>'required'
+        ]);
+        $offer = new Offer();
+        $offer->name = $request->name;
+        $offer->title = $request->title;
+        $offer->description = $request->description;
+        $offer->interest = $request->interest;
+        $offer->img = '';
+        $offer->save();
+
+        $fileNameToStore = '';
+        if($request->hasFile('image')) {
+            if($request->file('image')->isValid()){
+             
+                $fileNameToStore = $request->slug."".$request->file('image')->getClientOriginalName();
+                $extension = $request->image->extension();
+                $request->image->storeAs('/public/Offers', $fileNameToStore);
+                // $url = Storage::url($unix.".".$extension);  
+                $urlMain= $request->image->move(public_path('BlogPhotos'), $fileNameToStore);           
+            }
+            $newOffer = Offer::find($offer->id);
+            $newOffer->img = $fileNameToStore;
+            $newOffer->save();
+            }else {
+                
+        }
+        FacadesSession::flash('success', 'New Offer Created');
+        return redirect()->back();
     }
 }

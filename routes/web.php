@@ -35,6 +35,7 @@ Route::get('/panel/users', [AdminPagesController::class, 'users'])->name('admin.
 Route::get('/panel/packages', [AdminPagesController::class, 'packages'])->name('admin.packages');
 Route::get('/panel/contactus', [AdminPagesController::class, 'contactus'])->name('admin.contact');
 Route::get('/panel/offers', [AdminPagesController::class, 'offers'])->name('admin.offers');
+Route::post('/panel/offers', [AdminPagesController::class, 'offers_new'])->name('admin.offers.new');
 
 
 // Route::get('/', function () {

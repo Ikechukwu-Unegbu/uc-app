@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('interest');
             $table->string('title');
-            $table->tinyText('description');
+            $table->text('description');
             $table->string('img');
             $table->timestamps();
         });
