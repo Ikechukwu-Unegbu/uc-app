@@ -11,7 +11,7 @@
 
 @section('content')
 @include('dashboard\partials\_top_searchbar')
-<div style="width: 100%; display:block;" class="container" style="min-height: 100vh;">
+<div style="width: 100%; min-height:100vh; display:block;" class="container" style="min-height: 100vh;">
 
   <table class="table">
     <thead class="mb-4">
@@ -36,20 +36,17 @@
         <td>{{$add->coin_abb}}</td>
         <td>{{$add->addrs}}</td>
         <td>
-          <a href="" t class="btn btn-primary btn-sm">Edit</a>
-          <a href="" t class="btn btn-secondary btn-sm">Delete</a>
+          <button  data-toggle="modal" data-target="#edit-{{$add->id}}" class="btn btn-primary btn-sm">Edit</button>
+          <a href="{{route('admin.address.delete', [$add->id])}}" class="btn btn-secondary btn-sm">Delete</a>
           <!-- <a href="" t class="btn btn-secondary btn-sm">Small button</a> -->
         </td>
       </tr>
+      @include('dashboard\address\_edit_address')
       @endforeach
     </tbody>
   </table>
-</div>
 
-<!-- modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="new-offer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="new-offer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,4 +81,10 @@
     </div>
   </div>
 </div>
+</div>
+
+<!-- modal -->
+
+<!-- Modal -->
+
 @endsection 

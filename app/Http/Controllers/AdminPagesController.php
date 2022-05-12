@@ -97,7 +97,7 @@ class AdminPagesController extends Controller
     public function editAddress(Request $request, $target){
         $add = Address::find($target);
         $add->coin_abb = $request->coin_abb;
-        $add->address = $request->address;
+        $add->addrs = $request->address;
         $add->save();
         FacadesSession::flash('success', 'Edited');
         return redirect()->back();
