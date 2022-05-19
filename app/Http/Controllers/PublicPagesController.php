@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Request as ModelsRequest;
 use App\Models\Userwallet;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,9 @@ class PublicPagesController extends Controller
     public function withdraw(){
 
         $addresses = Userwallet::all();
+        $withs = ModelsRequest::all();  
 
-        return view('pages.fund.withdraw')->with('adds', $addresses);
+        return view('pages.fund.withdraw')->with('adds', $addresses)
+                        ->with('withdrawals', $withs);
     }
 }

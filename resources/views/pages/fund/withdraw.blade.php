@@ -28,13 +28,31 @@
             <li class="list-group-item wallet-list">
               <div class="">{{$add->coin_abb}}</div>
               <div class="">{{$add->wallet_add}}</div>
+              <div><button class="btn btn-sm" data-toggle="modal" data-target="#delete-{{$add->id}}">Delete</button></div>
             </li>
+            @include('pages\fund\_delete_modal')
           @endforeach
         </ul>
 
       </div>
       <div class="withdraw-right">
-          <form action="" class="form">
+          <div class="">
+            @if(count($withdrawals)<1)
+              <p class="text-dark">No Withdrawal Request.</p>
+            @else 
+            <ul class="list-group">
+              @foreach($withdrawals as $drawal)
+                <li class="list-group-item" style="display:flex; grid-gap:1rem;">
+                   <p class="text-dark">You have a pending withdrawal request for ${{$drawal->amount}} to {{$drawal->add}}</p>
+                   <button class="btn btn-sm">Cancel</button>
+                </li>
+              @endforeach
+            </ul>
+            @endif
+          </div>
+          <form  action="{{route('withdraw.request')}}" method="POST" class="form mt-5">
+            <h4 class="text-dark">Initaite Withdrawal</h4>
+            @csrf 
             <div class="form-group mt-3">
               <label for="" class="form-label">Amount</label>
               <input type="text" placeholder="$100" name="amount" class="form-control">
@@ -44,12 +62,12 @@
               <select name="address" class="form-control form-select" aria-label="Default select example">
                 <option selected>Select Wallet</option>
                 @foreach($adds as $add)
-                <option value="{{$add->wallet_add}}">{{$add->coin_abb}} | {{$add->wallet_add}}</option>
+                <option value="{{$add->coin_abb}} - {{$add->wallet_add}}">{{$add->coin_abb}} | {{$add->wallet_add}}</option>
                 @endforeach
               </select>
             </div>
             <div class="form-group">
-              <button class="btn btn-sm">Send</button>
+              <button style="float:right ;" class="btn btn-sm">Send</button>
             </div>
           </form>
       </div>

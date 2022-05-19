@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
+use App\Models\Request as ModelsRequest;
 use App\Models\User;
 use App\Models\Userwallet;
 use App\Models\Wallet;
@@ -102,13 +103,32 @@ class ProfileController extends Controller
         $wallet->user_id = Auth::user()->id;
         $wallet->wallet_add = $request->address;
         $wallet->save();
-
+        
         Session::flash('success', $request->coin_abb.' '.'Wallet Address set.');
         return redirect()->back();
     }
 
     public function withdrawRequest(Request $request){
-        
+        var_dump($request->all());
+        $request->validate([
+            'amount'=>'required',
+            'address'=>'required'
+        ]);
+
+        $req = new ModelsRequest();
+        $req->user_id = Auth::user()->id;
+        $req->amount = $request->amount;
+        $req->add = $request->address;
+        $req->save();
+
+        Session::flash('request', 'Your request will be responded to shortly.');
+        return redirect()->back();
+    }
+
+    public function deleteAddress($addressId){
+        $address = Userwallet::find($addressId);
+        $address->delete();
+        return redirect()->back();
     }
 
 }
