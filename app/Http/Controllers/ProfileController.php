@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Offer;
 use App\Models\User;
+use App\Models\Userwallet;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -87,5 +88,23 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
+
+
+    public function addAddress(Request $request){
+        //var_dump($request->all());
+        $request->validate([
+            'address'=>'required|string',
+            'coin_initial'=>'required|string'
+        ]);
+
+        $wallet = New Userwallet();
+        $wallet->coin_abb = $request->coin_initial;
+        $wallet->user_id = Auth::user()->id;
+        $wallet->wallet_add = $request->address;
+        $wallet->save();
+
+        Session::flash('success', $request->coin_abb.' '.'Wallet Address set.');
+        return redirect()->back();
+    }
 
 }

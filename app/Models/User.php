@@ -54,6 +54,8 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Offer::class);
     }
 
-    
+    public function userwallet(){
+        return $this->hasMany(Userwallet::class);
+    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Userwallet;
 use Illuminate\Http\Request;
 
 class PublicPagesController extends Controller
@@ -32,5 +33,12 @@ class PublicPagesController extends Controller
 
     public function team(){
         return view('pages.team.index');
+    }
+
+    public function withdraw(){
+
+        $addresses = Userwallet::all();
+
+        return view('pages.fund.withdraw')->with('adds', $addresses);
     }
 }

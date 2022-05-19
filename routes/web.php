@@ -29,6 +29,8 @@ Route::get('/faq', [PublicPagesController::class, 'faq'])->name('faq.index');
 Route::get('/data', [PublicPagesController::class, 'data'])->name('data.index');
 Route::get('/team', [PublicPagesController::class, 'team'])->name('team');
 Route::get('/blog', [PublicPagesController::class, 'blog'])->name('blog');
+Route::get('/withdraw', [PublicPagesController::class, 'withdraw'])->name('withdraw')->middleware(['auth']);
+Route::post('/add/address', [ProfileController::class, 'addAddress'])->name('add.address')->middleware(['auth']);
 
 
 
