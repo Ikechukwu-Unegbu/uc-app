@@ -3,7 +3,13 @@
 @section('head')
 <link rel="stylesheet" href="{{asset('css\custom-css\profile.css')}}">
 <link rel="stylesheet" href="{{asset('css\custom-css\withdraw.css')}}">
-
+<style>
+  .wallet-list{
+    display:flex;
+    flex-direction: row;
+    grid-gap: 1.4rem;
+  }
+</style>
 @endsection
 
 @section('content')
@@ -18,11 +24,12 @@
 
         <!-- user wallet list -->
         <ul class="list-group">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
-          <li class="list-group-item">A fourth item</li>
-          <li class="list-group-item">And a fifth one</li>
+          @foreach($adds as $add)
+            <li class="list-group-item wallet-list">
+              <div class="">{{$add->coin_abb}}</div>
+              <div class="">{{$add->wallet_add}}</div>
+            </li>
+          @endforeach
         </ul>
 
       </div>
@@ -34,11 +41,11 @@
             </div>
             <div class="form-group mt-3">
               <label for="" class="form-label">Pick Address</label>
-              <select class="form-control form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select name="address" class="form-control form-select" aria-label="Default select example">
+                <option selected>Select Wallet</option>
+                @foreach($adds as $add)
+                <option value="{{$add->wallet_add}}">{{$add->coin_abb}} | {{$add->wallet_add}}</option>
+                @endforeach
               </select>
             </div>
             <div class="form-group">

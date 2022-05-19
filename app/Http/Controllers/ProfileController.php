@@ -107,4 +107,8 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
+    public function withdrawRequest(Request $request){
+        
+    }
+
 }
