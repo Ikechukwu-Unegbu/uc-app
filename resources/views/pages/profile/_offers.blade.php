@@ -11,7 +11,7 @@
           <div class="card-header" id="headingOne">
             <h2 class="mb-0">
               <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#descr-{{$offer->id}}" aria-expanded="true" aria-controls="collapseOne">
-                Read More About {{$offer->name}}
+                Read More...
               </button>
             </h2>
           </div>

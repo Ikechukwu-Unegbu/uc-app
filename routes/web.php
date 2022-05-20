@@ -52,6 +52,8 @@ Route::post('/panel/address/new', [AdminPagesController::class, 'addressStore'])
 Route::post('/panel/address/edit/{target}', [AdminPagesController::class, 'editAddress'])->name('admin.address.edit');
 Route::get('/panel/address/delete/{target}', [AdminPagesController::class, 'deleteAddress'])->name('admin.address.delete');
 Route::post('/panel/search', [SearchController::class, 'searchUser'])->name('search')->middleware(['auth']);
+Route::get('/panel/user/{username}/{userid}', [AdminPagesController::class, 'showuser'])->name('panel.user.profile')->middleware(['auth']);
+
 
 // Route::get('/', function () {
 //     return view('welcome');

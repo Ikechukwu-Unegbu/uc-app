@@ -16,6 +16,11 @@ class AdminPagesController extends Controller
         return view('dashboard.index');
     }
 
+    public function showuser($username, $userid){
+        $user = User::find($userid);
+        return view('dashboard.users.show')->with('user', $user);
+    }
+
     public function users(){
         $users = User::paginate(50);
         $total = count(User::all());
