@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPagesController;
 use App\Http\Controllers\InteractionsController;
+use App\Http\Controllers\MiscController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicPagesController;
 use App\Http\Controllers\SearchController;
@@ -53,7 +54,8 @@ Route::post('/panel/address/edit/{target}', [AdminPagesController::class, 'editA
 Route::get('/panel/address/delete/{target}', [AdminPagesController::class, 'deleteAddress'])->name('admin.address.delete');
 Route::post('/panel/search', [SearchController::class, 'searchUser'])->name('search')->middleware(['auth']);
 Route::get('/panel/user/{username}/{userid}', [AdminPagesController::class, 'showuser'])->name('panel.user.profile')->middleware(['auth']);
-
+Route::get('/panel/topup/{userid}', [MiscController::class, 'topup'])->name('panel.topup')->middleware(['auth']);
+Route::get('/panel/requests', [MiscController::class, 'requestPage'])->name('panel.request')->middleware(['auth']);
 
 // Route::get('/', function () {
 //     return view('welcome');

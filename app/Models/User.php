@@ -12,6 +12,7 @@ use App\Models\Offer;
 
 
 
+
 class User extends \TCG\Voyager\Models\User
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -56,6 +57,10 @@ class User extends \TCG\Voyager\Models\User
 
     public function userwallet(){
         return $this->hasMany(Userwallet::class);
+    }
+
+    public function req(){
+        return $this->hasMany(Request::class);
     }
 
 }

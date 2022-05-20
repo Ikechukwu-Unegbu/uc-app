@@ -10,8 +10,11 @@
   <h3 class="text-center text-dark">User Profile</h3>
   <div class="container">
     <div class="">
-      <button class="btn btn-primary">Top Up User</button>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#top-up">Top Up User</button>
       <button class="btn btn-danger">Block User</button>
+    </div>
+    <div class="">
+      @include('partials._message')
     </div>
     <div class="">
       <span><b>Username:</b></span>
@@ -58,6 +61,41 @@
     <div class="">
       <span><b>Balance:</b></span>
       <span><p>${{$user->wallet->balace}}</p></span>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- topup modal -->
+<div class="modal fade" id="top-up" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Top Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('panel.topup', [$user->id])}}" class="form">
+          @csrf 
+          <div class="form-group">
+            <label for="" class="form-label">Amount:</label>
+            <input type="text" name="amount" class="form-control">
+          </div>
+          <div class="form-group">
+            <button style="float:right;" class="btn btn-sm">
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
 </div>
