@@ -20,6 +20,7 @@ class MiscController extends Controller
 
     public function requestPage(){
         $req = ModelsRequest::paginate(30);
-        return view('dashboard.request.request')->with('requests', $req);
+        //print($req->user->id);die;
+        return view('dashboard.requests.request')->with('requests', $req);
     }
 }

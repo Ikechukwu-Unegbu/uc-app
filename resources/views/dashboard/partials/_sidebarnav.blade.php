@@ -84,8 +84,8 @@
             <a class="collapse-item" href="{{route('admin.contact')}}">Contact Us</a>
             <a class="collapse-item" href="{{route('admin.offers')}}">Offers</a>
             <a class="collapse-item" href="{{route('admin.address')}}">Wallet Address</a>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
+            <a class="collapse-item" href="{{route('panel.request')}}">Withdrawal Request</a>
+ 
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>

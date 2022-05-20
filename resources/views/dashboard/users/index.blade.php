@@ -27,9 +27,7 @@
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
         <td>
-          <a href="" t class="btn btn-primary btn-sm">Small button</a>
-          <a href="" t class="btn btn-secondary btn-sm">Small button</a>
-          <a href="" t class="btn btn-secondary btn-sm">Small button</a>
+          <a href="{{route('panel.user.profile', [$user->name, $user->id])}}" t class="btn btn-primary btn-sm">view</a>
         </td>
       </tr>
       @endforeach
