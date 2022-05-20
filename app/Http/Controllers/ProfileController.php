@@ -103,7 +103,7 @@ class ProfileController extends Controller
         $wallet->user_id = Auth::user()->id;
         $wallet->wallet_add = $request->address;
         $wallet->save();
-        
+
         Session::flash('success', $request->coin_abb.' '.'Wallet Address set.');
         return redirect()->back();
     }
@@ -128,6 +128,12 @@ class ProfileController extends Controller
     public function deleteAddress($addressId){
         $address = Userwallet::find($addressId);
         $address->delete();
+        return redirect()->back();
+    }
+
+    public function cancelRequest($reqId){
+        $req = ModelsRequest::find($reqId);
+        $req->delete();
         return redirect()->back();
     }
 

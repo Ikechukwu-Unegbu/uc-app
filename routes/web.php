@@ -33,7 +33,7 @@ Route::get('/withdraw', [PublicPagesController::class, 'withdraw'])->name('withd
 Route::post('/add/address', [ProfileController::class, 'addAddress'])->name('add.address')->middleware(['auth']);
 Route::post('/withdraw/request', [ProfileController::class, 'withdrawRequest'])->name('withdraw.request')->middleware(['auth']);
 Route::get('/delete/address/{id}', [ProfileController::class, 'deleteAddress'])->name('delete.wallet')->middleware(['auth']);
-
+Route::get('/withdraw/cancel/{id}', [ProfileController::class, 'cancelRequest'])->name('cancel.request')->middleware(['auth']);
 
 Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.index');
 Route::post('/settings', [ProfileController::class, 'settingsStore'])->name('settings.store')->middleware(['auth']);

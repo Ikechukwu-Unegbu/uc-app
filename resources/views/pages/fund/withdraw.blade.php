@@ -17,7 +17,7 @@
   <div class="container withdraw-container">
     <div class="withdraw">
       <div class="withdraw-left">
-      <button type="button" class="btn btn-primary mt-4 mb-4" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn mt-4 mb-4" data-toggle="modal" data-target="#exampleModal">
         Add New Withdrawal Address
       </button>
       @include('partials._message')
@@ -44,8 +44,9 @@
               @foreach($withdrawals as $drawal)
                 <li class="list-group-item" style="display:flex; grid-gap:1rem;">
                    <p class="text-dark">You have a pending withdrawal request for ${{$drawal->amount}} to {{$drawal->add}}</p>
-                   <button class="btn btn-sm">Cancel</button>
+                   <button type="button" data-toggle="modal" data-target="#cancel-{{$drawal->id}}" class="btn btn-sm">Cancel</button>
                 </li>
+                @include('pages\fund\_cancel_modal')
               @endforeach
             </ul>
             @endif
@@ -66,7 +67,7 @@
                 @endforeach
               </select>
             </div>
-            <div class="form-group">
+              <div class="form-group mt-5 mb-5">
               <button style="float:right ;" class="btn btn-sm">Send</button>
             </div>
           </form>
