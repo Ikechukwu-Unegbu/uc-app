@@ -40,6 +40,8 @@ Route::get('/withdraw/cancel/{id}', [ProfileController::class, 'cancelRequest'])
 Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.index');
 Route::post('/settings', [ProfileController::class, 'settingsStore'])->name('settings.store')->middleware(['auth']);
 Route::post('/password/retool', [ProfileController::class, 'passwordReset'])->name('password.new')->middleware(['auth']);
+Route::post('/invest/{offerid}', [MiscController::class, 'invest'])->name('invest')->middleware(['auth']);
+
 
 
 Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home');

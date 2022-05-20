@@ -26,7 +26,8 @@ class MiscController extends Controller
         return view('dashboard.requests.request')->with('requests', $req);
     }
 
-    public function invest(Request $req){
+    public function invest(Request $req, $offerId){
+        //var_dump($req->all());var_dump($offerId);die;
         $req->validate([
             'amount'=>'required'
         ]);
@@ -34,6 +35,7 @@ class MiscController extends Controller
         $pending->user_id = Auth::user()->id;
         $pending->amount = $req->amount;
         $pending->recieved = 0;
+        $pending->offer_id = $offerId;
         $pending->save();
 
         Session::flash('success', 'Your investiment is pending verifcation by admin.');

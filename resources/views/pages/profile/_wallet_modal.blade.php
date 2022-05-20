@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal-{{$offer->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -20,7 +20,8 @@
           </li>
           @endforeach
         </ul>
-        <form action="" method="POST">
+        <form action="{{route('invest', [$offer->id])}}" method="POST">
+          @csrf 
           <div class="form-group">
             <label for="" class="form-label">Amount</label>
             <input type="text" name="amount" placeholder="$2000" class="form-control">

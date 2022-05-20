@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pendings', function (Blueprint $table) {
-            //
+            // $table->tinyInteger('recieved')->default(0);
+            $table->string('package_name')->nullable();
+            $table->tinyInteger('offer_id')->nullable();
         });
     }
 

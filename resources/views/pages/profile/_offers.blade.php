@@ -24,7 +24,7 @@
         </div>
       </div>
       <div>
-        <button style="float: right;" data-toggle="modal" data-target="#exampleModal" class="btn btn-success mt-4 btn-sm">
+        <button style="float: right;" data-toggle="modal" data-target="#exampleModal-{{$offer->id}}" class="btn btn-success mt-4 btn-sm">
           Invest Now
         </button>
       </div>
