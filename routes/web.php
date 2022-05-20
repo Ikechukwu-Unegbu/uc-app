@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminPagesController;
 use App\Http\Controllers\InteractionsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicPagesController;
+use App\Http\Controllers\SearchController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +51,7 @@ Route::get('/panel/address', [AdminPagesController::class, 'address'])->name('ad
 Route::post('/panel/address/new', [AdminPagesController::class, 'addressStore'])->name('admin.address.new');
 Route::post('/panel/address/edit/{target}', [AdminPagesController::class, 'editAddress'])->name('admin.address.edit');
 Route::get('/panel/address/delete/{target}', [AdminPagesController::class, 'deleteAddress'])->name('admin.address.delete');
-
+Route::post('/panel/search', [SearchController::class, 'searchUser'])->name('search')->middleware(['auth']);
 
 // Route::get('/', function () {
 //     return view('welcome');
