@@ -24,11 +24,13 @@
         </div>
       </div>
       <div>
-        <button style="float: right;" class="btn btn-success mt-4 btn-sm">
+        <button style="float: right;" data-toggle="modal" data-target="#exampleModal" class="btn btn-success mt-4 btn-sm">
           Invest Now
         </button>
       </div>
     </div>
   </div>
+  @include('pages\profile\_wallet_modal')
   @endforeach
+
 </div>

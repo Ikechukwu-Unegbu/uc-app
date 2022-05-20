@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pending;
 use App\Models\Request as ModelsRequest;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class MiscController extends Controller
@@ -22,5 +24,19 @@ class MiscController extends Controller
         $req = ModelsRequest::paginate(30);
         //print($req->user->id);die;
         return view('dashboard.requests.request')->with('requests', $req);
+    }
+
+    public function invest(Request $req){
+        $req->validate([
+            'amount'=>'required'
+        ]);
+        $pending = new Pending();
+        $pending->user_id = Auth::user()->id;
+        $pending->amount = $req->amount;
+        $pending->recieved = 0;
+        $pending->save();
+
+        Session::flash('success', 'Your investiment is pending verifcation by admin.');
+        return redirect()->back();
     }
 }

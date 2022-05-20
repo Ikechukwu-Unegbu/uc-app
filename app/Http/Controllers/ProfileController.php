@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Offer;
 use App\Models\Request as ModelsRequest;
 use App\Models\User;
@@ -17,10 +18,12 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         $wallet = Wallet::where('user_id', '=', $user->id)->first();
         $offers = Offer::all();
+        $addres = Address::all();
         return view('pages.profile.index')
             ->with('wallet', $wallet)
             ->with('user', $user)
-            ->with('offers', $offers);
+            ->with('offers', $offers)
+            ->with('adds', $addres);
     }
 
 

@@ -60,7 +60,7 @@ Route::get('/panel/requests', [MiscController::class, 'requestPage'])->name('pan
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';
