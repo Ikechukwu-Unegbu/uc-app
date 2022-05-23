@@ -122,4 +122,11 @@ class AdminPagesController extends Controller
         FacadesSession::flash('success', 'Deleted');
         return redirect()->back();
     }
+
+
+    public function offer_delete($id){
+        $offer = Offer::find($id)->delete();
+        FacadesSession::flash('success', 'Offer deleted.');
+        return redirect()->back();
+    }
 }

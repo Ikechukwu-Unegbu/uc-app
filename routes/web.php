@@ -50,6 +50,8 @@ Route::get('/panel/packages', [AdminPagesController::class, 'packages'])->name('
 Route::get('/panel/contactus', [AdminPagesController::class, 'contactus'])->name('admin.contact');
 Route::get('/panel/offers', [AdminPagesController::class, 'offers'])->name('admin.offers');
 Route::post('/panel/offers', [AdminPagesController::class, 'offers_new'])->name('admin.offers.new');
+Route::post('/panel/offers/delete/{id}', [AdminPagesController::class, 'offer_delete'])->name('admin.offers.delete');
+
 Route::get('/panel/address', [AdminPagesController::class, 'address'])->name('admin.address');
 Route::post('/panel/address/new', [AdminPagesController::class, 'addressStore'])->name('admin.address.new');
 Route::post('/panel/address/edit/{target}', [AdminPagesController::class, 'editAddress'])->name('admin.address.edit');
