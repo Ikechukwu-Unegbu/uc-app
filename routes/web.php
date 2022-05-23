@@ -44,7 +44,7 @@ Route::post('/invest/{offerid}', [MiscController::class, 'invest'])->name('inves
 
 
 
-Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home');
+Route::get('/panel', [AdminPagesController::class, 'home'])->name('admin.home')->middleware(['auth']);
 Route::get('/panel/users', [AdminPagesController::class, 'users'])->name('admin.users');
 Route::get('/panel/packages', [AdminPagesController::class, 'packages'])->name('admin.packages');
 Route::get('/panel/contactus', [AdminPagesController::class, 'contactus'])->name('admin.contact');
@@ -65,6 +65,7 @@ Route::get('/panel/requests', [MiscController::class, 'requestPage'])->name('pan
 //     return view('welcome');
 // });
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware(['auth']);
+Route::get('/profile/fund/now', [ProfileController::class, 'fund'])->name('profile.fund')->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';

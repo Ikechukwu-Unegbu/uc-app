@@ -15,19 +15,27 @@ use Illuminate\Support\Facades\Session as FacadesSession;
 class AdminPagesController extends Controller
 {
     public function home(){
-        $user = User::find(Auth::user()->id);
-        if(Gate::denies('isuser', $user)) {
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
             abort(404);
         }
         return view('dashboard.index');
     }
 
     public function showuser($username, $userid){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $user = User::find($userid);
         return view('dashboard.users.show')->with('user', $user);
     }
 
     public function users(){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $users = User::paginate(50);
         $total = count(User::all());
 //        var_dump($total);die;
@@ -36,21 +44,37 @@ class AdminPagesController extends Controller
     }
 
     public function packages(){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         return view('dashboard.packages.index');
     }
 
     public function contactus(){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $messages = Contact::paginate(30);
         return view('dashboard.contact.index')->with('messages', $messages);
     }
 
     public function offers(){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $offers = Offer::paginate(30);
         return view('dashboard.offers.index')->with('offers', $offers);
     }
 
     public function offers_new(Request $request){
         //var_dump($request->all());die;
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $request->validate([
             'name'=>'required|string',
             'title'=>'required|string',
@@ -87,6 +111,10 @@ class AdminPagesController extends Controller
     }
 
     public function address(){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $add = Address::all();
         return view('dashboard.address.address')
             ->with('adds', $add);
@@ -94,6 +122,10 @@ class AdminPagesController extends Controller
 
     public function addressStore(Request $request){
         //var_dump($request->all());die;
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $request->validate([
             'coin_abb'=>'required|string',
             'address'=>'required|string'
@@ -109,6 +141,10 @@ class AdminPagesController extends Controller
     }
 
     public function editAddress(Request $request, $target){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $add = Address::find($target);
         $add->coin_abb = $request->coin_abb;
         $add->addrs = $request->address;
@@ -118,6 +154,10 @@ class AdminPagesController extends Controller
     }
 
     public function deleteAddress($target){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $add = Address::find($target)->delete();
         FacadesSession::flash('success', 'Deleted');
         return redirect()->back();
@@ -125,6 +165,10 @@ class AdminPagesController extends Controller
 
 
     public function offer_delete($id){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
         $offer = Offer::find($id)->delete();
         FacadesSession::flash('success', 'Offer deleted.');
         return redirect()->back();

@@ -4,7 +4,7 @@
       <button class="btn">
         Withdraw
       </button>
-      <button class="btn btn-fund" data-toggle="modal" data-target="#exampleModal">
+      <button class="btn btn-fund" data-toggle="modal" data-target="#fund">
         Fund
       </button>
     </div>

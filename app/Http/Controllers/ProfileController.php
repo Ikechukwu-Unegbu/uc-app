@@ -19,11 +19,17 @@ class ProfileController extends Controller
         $wallet = Wallet::where('user_id', '=', $user->id)->first();
         $offers = Offer::all();
         $addres = Address::all();
+
+
         return view('pages.profile.index')
             ->with('wallet', $wallet)
             ->with('user', $user)
             ->with('offers', $offers)
             ->with('adds', $addres);
+    }
+
+    public function fund(Request $req){
+        $
     }
 
 

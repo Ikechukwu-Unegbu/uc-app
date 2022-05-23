@@ -37,7 +37,7 @@
         <input type="text" name="password_confirmation" class="form-control">
       </div>
       <div class="form-group mt-4">
-        <button style="float: right;" class="btn btn-custom btn-primary">Create Account</button>
+        <button style="float: right;background-color:#f7921a;" class="btn btn-custom">Create Account</button>
       </div>
     </form>
   </div>      
