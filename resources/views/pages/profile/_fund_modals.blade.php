@@ -13,28 +13,31 @@
         <form action="{{route('profile.fund')}}" method="post">
           @csrf 
           <div class="form-group mt-3">
-            <label for="" class="form-label">Amount</label>
-            <input type="text" name="amount" class="form-control">
+            <b class="text-center text-dark">
+              Copy one of the address below and send USD equivalent of the entered amount to it.
+            </b>
+          </div>
+          <div class="form-group mt-3">
+            <label for="" class="form-label">Amount(USD)</label>
+            <input type="text" placeholder="100" name="amount" class="form-control">
           </div>
           <!-- <div class="form-group mt-3">
             <label for="" class="form-label"></label>
           </div> -->
-          <div class="form-group">
-
+          <div class="form-group mt-4 mb-4">
+            <button class="btn" style="background-color: #f7921a; color:white; float:right">Send</button>
           </div>
         </form>
+        <br>
         <div class="mt-4">
-          <ul class="list-group">
+          <ul class="list-group mt-5">
             @foreach($adds as $ad)
             <li class="list-group-item">{{$ad->coin_abb}} | {{$ad->addrs}}</li>
             @endforeach
           </ul>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-      </div>
+
     </div>
   </div>
 </div>

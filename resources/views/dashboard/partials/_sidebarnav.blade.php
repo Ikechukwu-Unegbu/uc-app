@@ -83,6 +83,7 @@
             <a class="collapse-item" href="{{route('admin.packages')}}">Packages</a>
             <a class="collapse-item" href="{{route('admin.contact')}}">Contact Us</a>
             <a class="collapse-item" href="{{route('admin.offers')}}">Offers</a>
+            <a class="collapse-item" href="{{route('panel.user_fund')}}">User Funding</a>
             <a class="collapse-item" href="{{route('admin.address')}}">Wallet Address</a>
             <a class="collapse-item" href="{{route('panel.request')}}">Withdrawal Request</a>
  

@@ -60,12 +60,15 @@ Route::post('/panel/search', [SearchController::class, 'searchUser'])->name('sea
 Route::get('/panel/user/{username}/{userid}', [AdminPagesController::class, 'showuser'])->name('panel.user.profile')->middleware(['auth']);
 Route::get('/panel/topup/{userid}', [MiscController::class, 'topup'])->name('panel.topup')->middleware(['auth']);
 Route::get('/panel/requests', [MiscController::class, 'requestPage'])->name('panel.request')->middleware(['auth']);
+Route::get('/panel/user/fund', [AdminPagesController::class, 'userFund'])->name('panel.user_fund')->middleware(['auth']);
+Route::get('/panel/user/addfund/{userid}/{amount}/{fundingID}', [AdminPagesController::class, 'addfund'])->name('addfund')->middleware(['auth']);
+
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware(['auth']);
-Route::get('/profile/fund/now', [ProfileController::class, 'fund'])->name('profile.fund')->middleware(['auth']);
+Route::post('/profile/fund/now', [ProfileController::class, 'fund'])->name('profile.fund')->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';

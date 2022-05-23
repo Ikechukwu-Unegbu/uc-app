@@ -63,4 +63,8 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Request::class);
     }
 
+    public function fundaccount(){
+        return $this->hasMany(Fundaccount::class);
+    }
+
 }

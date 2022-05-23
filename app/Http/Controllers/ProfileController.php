@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\Fundaccount;
 use App\Models\Offer;
 use App\Models\Request as ModelsRequest;
 use App\Models\User;
@@ -19,17 +20,28 @@ class ProfileController extends Controller
         $wallet = Wallet::where('user_id', '=', $user->id)->first();
         $offers = Offer::all();
         $addres = Address::all();
+        $funds = Fundaccount::where('process', 0)->get();
 
 
         return view('pages.profile.index')
             ->with('wallet', $wallet)
             ->with('user', $user)
             ->with('offers', $offers)
-            ->with('adds', $addres);
+            ->with('adds', $addres)
+            ->with('funds', $funds);
     }
 
-    public function fund(Request $req){
-        $
+    public function fund(Request $request){
+        $request->validate([
+            'amount'=>'required'
+        ]);
+        $fund = new Fundaccount();
+        $fund->amount = $request->amount;
+        $fund->user_id = Auth::user()->id;
+        $fund->process = 0;
+        $fund->save();
+
+        return redirect()->back();
     }
 
 

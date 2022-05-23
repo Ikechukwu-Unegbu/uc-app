@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\Contact;
+use App\Models\Fundaccount;
 use App\Models\Interaction;
 use App\Models\Offer;
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -171,6 +173,26 @@ class AdminPagesController extends Controller
         }
         $offer = Offer::find($id)->delete();
         FacadesSession::flash('success', 'Offer deleted.');
+        return redirect()->back();
+    }
+
+    public function userFund(){
+        $userLogged = User::find(Auth::user()->id);
+        if(!Gate::allows('isuser', $userLogged)) {
+            abort(404);
+        }
+        $funds = Fundaccount::paginate(50);
+        return view('dashboard.users.userfund')->with('funds', $funds);
+    }
+
+    public function addfund($userid, $amount, $fundid){
+        $wallet = Wallet::where('user_id', $userid)->first();
+        $wallet->balace = ($wallet->balace + (int)$amount);
+        $wallet->save();
+        $fund = Fundaccount::find($fundid);
+        $fund->process = 1;
+        $fund->save();
+        FacadesSession::flash('success', 'User has been funded');
         return redirect()->back();
     }
 }
