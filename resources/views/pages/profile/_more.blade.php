@@ -9,7 +9,7 @@
       </button>
     </div>
     <h3 class="card-title text-center">Your Wallet</h3>
-
+      <span class="text-center"><b>{{$wallet->balace}}</b></span>
   </div>
 </div>
 

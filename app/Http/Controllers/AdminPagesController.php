@@ -8,11 +8,17 @@ use App\Models\Interaction;
 use App\Models\Offer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
 class AdminPagesController extends Controller
 {
     public function home(){
+        $user = User::find(Auth::user()->id);
+        if(Gate::denies('isuser', $user)) {
+            abort(404);
+        }
         return view('dashboard.index');
     }
 

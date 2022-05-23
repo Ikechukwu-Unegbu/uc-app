@@ -20,7 +20,8 @@
       <tr>
         <th scope="col">#id</th>
         <th scope="col">name</th>
-        <th scope="col">no. of views</th>
+        <th scope="col">title</th>
+        <th scope="col">interest</th>
         <th scope="col">Handle</th>
       </tr>
     </thead>
@@ -29,13 +30,14 @@
       <tr>
         <th scope="row">{{$offer->id}}</th>
         <td>{{$offer->name}}</td>
-        <td>nill</td>
+        <td>{{$offer->title}}</td>
+        <td>{{$offer->interest}}</td>
         <td>
-          <a href="" t class="btn btn-primary btn-sm">Small button</a>
-          <a href="" t class="btn btn-secondary btn-sm">Small button</a>
-          <a href="" t class="btn btn-secondary btn-sm">Small button</a>
+          <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#view-{{$offer->id}}">View</button>
+          <button  class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#delete-{{$offer->id}}">Delete</button>
         </td>
       </tr>
+      @include('dashboard\offers\_modal')
       @endforeach
     </tbody>
   </table>
