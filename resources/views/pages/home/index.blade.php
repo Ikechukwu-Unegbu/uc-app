@@ -1,5 +1,5 @@
 @extends('layouts.public')
-
+<link rel="stylesheet" href="{{asset('css\custom-css\profile.css')}}">
 @section('head')
 
 @endsection

@@ -14,7 +14,7 @@ class MiscController extends Controller
     public function topup(Request $request, $id){
         $wallet = Wallet::where('user_id', $id)->first();
 
-        $wallet->balace = $request->amount;
+        $wallet->balace = ($wallet->balace + (int)$request->amount);
         $wallet->save();
         Session::flash('success', 'Top up successful.');
         return redirect()->back();
@@ -34,7 +34,7 @@ class MiscController extends Controller
         $pending = new Pending();
         $pending->user_id = Auth::user()->id;
         $pending->amount = $req->amount;
-        $pending->recieved = 0;
+        // $pending->recieved = 0;
         $pending->offer_id = $offerId;
         $pending->save();
 

@@ -5,7 +5,7 @@
       <p class="text-center"><b>{{$offer->name}}</b></p>
       <img src="{{ asset('BlogPhotos/'.$offer->img) }}" class="card-img" alt="">
       <h4 class="text-center">{{$offer->title}}</h4>
-      <p class="text-center"><span>{{$offer->interest}}%/month</span></p>
+      <p class="text-center"><span>{{$offer->interest}}%/week</span></p>
       <div class="accordion" id="accordionExample">
         <div class="card">
           <div class="card-header" id="headingOne">

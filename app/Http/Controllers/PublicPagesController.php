@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
+use App\Models\Offer;
 use App\Models\Request as ModelsRequest;
 use App\Models\Userwallet;
 use Illuminate\Http\Request;
@@ -9,7 +11,10 @@ use Illuminate\Http\Request;
 class PublicPagesController extends Controller
 {
     public function home(){
-        return view('pages.home.index');
+        $offers = Offer::all();
+        $addres = Address::all();
+        return view('pages.home.index')->with('offers', $offers)
+            ->with('adds', $addres);
     }
 
     public function blog(){
