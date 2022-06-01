@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pending;
 use App\Models\Request as ModelsRequest;
+use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,37 @@ class MiscController extends Controller
         $pending->offer_id = $offerId;
         $pending->save();
 
+
+
         Session::flash('success', 'Your investiment is pending verifcation by admin.');
         return redirect()->back();
     }
+
+
+    public function user_investments(){
+
+        $pendings = Pending::paginate(50);
+        return view('dashboard.userinvestments.index')->with('invests', $pendings);
+    }
+
+
+    public function blockuser($userid){
+        $user = User::find($userid);
+        $user->blocked = 0;
+        $user->save();
+
+        Session::flash('success', 'User has been blocked.');
+        return redirect()->back();
+    }
+
+    public function un_blockuser($userid){
+        $user = User::find($userid);
+        $user->blocked = 1;
+        $user->save();
+
+        Session::flash('success', 'User has been ublocked.');
+        return redirect()->back();
+    }
+
+
 }

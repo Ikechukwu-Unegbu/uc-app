@@ -62,6 +62,9 @@ Route::get('/panel/topup/{userid}', [MiscController::class, 'topup'])->name('pan
 Route::get('/panel/requests', [MiscController::class, 'requestPage'])->name('panel.request')->middleware(['auth']);
 Route::get('/panel/user/fund', [AdminPagesController::class, 'userFund'])->name('panel.user_fund')->middleware(['auth']);
 Route::get('/panel/user/addfund/{userid}/{amount}/{fundingID}', [AdminPagesController::class, 'addfund'])->name('addfund')->middleware(['auth']);
+Route::get('/panel/users/investments', [MiscController::class, 'user_investments'])->name('user_investments')->middleware(['auth']);
+Route::get('/panel/block/{userid}', [MiscController::class, 'blockuser'])->name('block.user')->middleware(['auth']);
+Route::get('/panel/unblock/{userid}', [MiscController::class, 'un_blockuser'])->name('unblock.user')->middleware(['auth']);
 
 
 // Route::get('/', function () {

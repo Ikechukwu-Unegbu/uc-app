@@ -11,7 +11,11 @@
   <div class="container">
     <div class="">
       <button class="btn btn-primary" data-toggle="modal" data-target="#top-up">Top Up User</button>
-      <button class="btn btn-danger">Block User</button>
+      @if($user->blocked == 1)
+      <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Block User</button>
+      @else 
+      <button class="btn btn-success" data-toggle="modal" data-target="#unblock">Unblock User</button>
+      @endif 
     </div>
     <div class="">
       @include('partials._message')
@@ -99,4 +103,7 @@
     </div>
   </div>
 </div>
+
+@include('dashboard\users\partials\_blocking_modal')
+@include('dashboard\users\partials\_unblocking_modal')
 @endsection 

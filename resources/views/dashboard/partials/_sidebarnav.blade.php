@@ -80,7 +80,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="{{route('admin.users')}}">Users</a>
-            <a class="collapse-item" href="{{route('admin.packages')}}">Packages</a>
+            <a class="collapse-item" href="{{route('user_investments')}}">User Investments</a>
+
             <a class="collapse-item" href="{{route('admin.contact')}}">Contact Us</a>
             <a class="collapse-item" href="{{route('admin.offers')}}">Offers</a>
             <a class="collapse-item" href="{{route('panel.user_fund')}}">Deposit Request</a>

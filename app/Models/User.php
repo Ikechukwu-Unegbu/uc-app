@@ -67,4 +67,8 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Fundaccount::class);
     }
 
+    public function pending(){
+        return $this->hasMany(Pending::class);
+    }
+
 }
