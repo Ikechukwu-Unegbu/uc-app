@@ -46,7 +46,7 @@
 <!-- modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="new-offer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal " id="new-offer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -73,6 +73,14 @@
             <input type="text" name="interest" class="form-control">
           </div>
           <div class="form-grou mt-3">
+            <label for="" class="form-label">Package Duration</label>
+            <input type="text" name="duration" placeholder="e.g month" class="form-control">
+          </div>
+          <div class="form-grou mt-3">
+            <label for="" class="form-label">Package Days</label>
+            <input type="text" name="days" placeholder="e.g 7" class="form-control">
+          </div>
+          <div class="form-grou mt-3">
             <label for="" class="form-label">Package Description</label>
             <!-- <input type="text" name="description" class="form-control"> -->
             <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
@@ -94,10 +102,7 @@
           </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+  
     </div>
   </div>
 </div>

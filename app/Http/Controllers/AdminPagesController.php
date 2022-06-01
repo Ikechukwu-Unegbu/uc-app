@@ -82,6 +82,8 @@ class AdminPagesController extends Controller
             'title'=>'required|string',
             'description'=>'required|string',
             'image'=>'required',
+            'days'=>'required',
+            'duration'=>'required',
             'interest'=>'required'
         ]);
         $offer = new Offer();
@@ -90,6 +92,8 @@ class AdminPagesController extends Controller
         $offer->description = $request->description;
         $offer->interest = $request->interest;
         $offer->img = '';
+        $offer->duration = $request->duration;
+        $offer->dur_dig = $request->days;
         $offer->save();
 
         $fileNameToStore = '';
