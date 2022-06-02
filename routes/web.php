@@ -6,7 +6,9 @@ use App\Http\Controllers\MiscController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicPagesController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TestController;
 use App\Models\User;
+use App\Notifications\HelloUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -72,6 +74,16 @@ Route::get('/panel/unblock/{userid}', [MiscController::class, 'un_blockuser'])->
 // });
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware(['auth']);
 Route::post('/profile/fund/now', [ProfileController::class, 'fund'])->name('profile.fund')->middleware(['auth']);
+
+Route::get('/test_email', [TestController::class, 'mailTesting']);
+
+Route::get('/test-email', function(){
+    $user = User::find(1);
+ 
+    // return (new InvoicePaid($invoice))
+    //             ->toMail($invoice->user);
+    $user->notify(new HelloUser());
+});
 
 
 require __DIR__.'/auth.php';
