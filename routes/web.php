@@ -39,7 +39,7 @@ Route::post('/withdraw/request', [ProfileController::class, 'withdrawRequest'])-
 Route::get('/delete/address/{id}', [ProfileController::class, 'deleteAddress'])->name('delete.wallet')->middleware(['auth']);
 Route::get('/withdraw/cancel/{id}', [ProfileController::class, 'cancelRequest'])->name('cancel.request')->middleware(['auth']);
 
-Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.index');
+Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.index')->middleware(['auth']);
 Route::post('/settings', [ProfileController::class, 'settingsStore'])->name('settings.store')->middleware(['auth']);
 Route::post('/password/retool', [ProfileController::class, 'passwordReset'])->name('password.new')->middleware(['auth']);
 Route::post('/invest/{offerid}', [MiscController::class, 'invest'])->name('invest')->middleware(['auth']);
@@ -82,7 +82,7 @@ Route::get('/test-email', function(){
  
     // return (new InvoicePaid($invoice))
     //             ->toMail($invoice->user);
-    $user->notify(new HelloUser());
+   // $user->notify(new HelloUser());
 });
 
 

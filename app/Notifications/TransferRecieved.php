@@ -16,9 +16,12 @@ class TransferRecieved extends Notification
      *
      * @return void
      */
-    public function __construct()
+    protected $user;
+    protected $transfer;
+    public function __construct($user, $transfer)
     {
-        //
+        $this->user = $user;
+        $this->transfer = $transfer;
     }
 
     /**
@@ -41,9 +44,12 @@ class TransferRecieved extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Transfer Recieved')
+            ->greeting('Hello! '.$this->user->name)
+            ->line('Your transfer of '.$this->transfer->amount . ' has been recieved and your balance updated.')
+            ->line('')
+            ->action('Log in to see your balance', url('/login'))
+            ->line('Thank you for using our platform!');
     }
 
     /**

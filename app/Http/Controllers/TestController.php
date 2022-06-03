@@ -10,6 +10,6 @@ class TestController extends Controller
 {
     public function mailTesting(){
         $user = User::find(3);
-        $user->notify(new HelloUser());
+        $user->notify(new HelloUser($user));
     }
 }

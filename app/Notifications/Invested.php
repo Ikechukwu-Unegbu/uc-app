@@ -16,9 +16,12 @@ class Invested extends Notification
      *
      * @return void
      */
-    public function __construct()
+    protected $user;
+    protected $investment;
+    public function __construct($user, $investment)
     {
-        //
+        $this->user = $user;
+        $this->investment = $investment;
     }
 
     /**
@@ -41,9 +44,10 @@ class Invested extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Invested')
+                    ->line('Hi '.$this->user->name . ' congrats and thanks for investing with us. Look out for your pay day.')
+                    ->action('Profile', url('/profile'))
+                    ->line('You made the right decision!');
     }
 
     /**

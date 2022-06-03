@@ -16,9 +16,10 @@ class HelloUser extends Notification
      *
      * @return void
      */
-    public function __construct()
+    protected $user ;
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -41,9 +42,12 @@ class HelloUser extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Welcome to Mazone Investment Co.')
+                    ->greeting('Hello! '.$this->user->name)
+                    ->line('You are welcome to Mazone Investment Co.')
+                    ->line('We are more than delighted to have you.')
+                    ->action('Complete Your Profile', url('/settings'))
+                    ->line('Thank you for using our platform!');
     }
 
     /**
