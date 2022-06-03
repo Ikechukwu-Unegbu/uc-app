@@ -16,9 +16,13 @@ class InterestPaid extends Notification
      *
      * @return void
      */
-    public function __construct()
+    protected $user;
+    protected $investment;
+
+    public function __construct($user, $investment)
     {
-        //
+        $this->user = $this->user;
+        $this->investment = $this->investment;
     }
 
     /**
