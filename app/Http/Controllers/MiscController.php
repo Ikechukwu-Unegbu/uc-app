@@ -7,6 +7,7 @@ use App\Models\Pending;
 use App\Models\Request as ModelsRequest;
 use App\Models\User;
 use App\Models\Wallet;
+use App\Notifications\Invested;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -31,9 +32,16 @@ class MiscController extends Controller
     public function invest(Request $req, $offerId){
         //var_dump($req->all());var_dump($offerId);die;
         $date = date('Y-m-d h:i:s', time());
+        $user = User::find(Auth::user()->id);
         $req->validate([
             'amount'=>'required'
         ]);
+        // validating amount
+        if((float)$user->wallet->balace <= (float)$req->amount){
+            Session::flash('failed', 'Insufficient balance. Please fund your account.');
+            return redirect()->back();
+        }
+        //
         $pending = new Pending();
         $pending->user_id = Auth::user()->id;
         $pending->amount = $req->amount;
@@ -42,8 +50,9 @@ class MiscController extends Controller
         $pending->offer_id = $offerId;
         $pending->expiry = date('Y-m-d', strtotime($date. ' + '.$offer->dur_dig.' days'));
         $pending->save();
-
-
+        
+        
+        $user->notify(new Invested($user, $pending));
 
         Session::flash('success', 'Your investiment is pending verifcation by admin.');
         return redirect()->back();

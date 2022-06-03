@@ -5,14 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Address;
 use App\Models\Offer;
 use App\Models\Request as ModelsRequest;
+use App\Models\User;
 use App\Models\Userwallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PublicPagesController extends Controller
 {
     public function home(){
         $offers = Offer::all();
         $addres = Address::all();
+        if(Auth::check()){
+            $user = User::find(Auth::user()->id);
+            return view('pages.home.index')->with('offers', $offers)
+            ->with('adds', $addres)
+            ->with('user', $user);
+        }
         return view('pages.home.index')->with('offers', $offers)
             ->with('adds', $addres);
     }

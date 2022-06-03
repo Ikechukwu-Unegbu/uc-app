@@ -3,23 +3,18 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+        @if(Auth::check())
+        <h5 class="modal-title" id="exampleModalLabel">Your balance is USD {{$user->wallet->balace}}</h5>
+        @endif 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div>
-          <b class="text-center text-dark">Copy the address to your prefered coin and fund with the amount filled in the form below.</b>
+          <!-- <b class="text-center text-dark">Copy the address to your prefered coin and fund with the amount filled in the form below.</b> -->
         </div>
-        <ul class="list-group">
-          @foreach($adds as $add)
-          <li class="list-group-item">
-            <span>{{$add->coin_abb}}</span>
-            <span>{{$add->addrs}}</span>
-          </li>
-          @endforeach
-        </ul>
+
         <form action="{{route('invest', [$offer->id])}}" method="POST">
           @csrf 
           <div class="form-group">

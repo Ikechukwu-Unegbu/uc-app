@@ -20,7 +20,8 @@ class WithdrawalRequestRecieved extends Notification
     protected $request;
     public function __construct($user, $request)
     {
-        
+        $this->user = $user;
+        $this->request = $request;
     }
 
     /**

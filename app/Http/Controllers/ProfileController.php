@@ -9,6 +9,7 @@ use App\Models\Request as ModelsRequest;
 use App\Models\User;
 use App\Models\Userwallet;
 use App\Models\Wallet;
+use App\Notifications\WithdrawalRequestRecieved;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -141,7 +142,9 @@ class ProfileController extends Controller
         $req->amount = $request->amount;
         $req->add = $request->address;
         $req->save();
-
+        // add notification
+        $user = User::find(Auth::user()->id);
+        $user->notify(new WithdrawalRequestRecieved($user, $req));
         Session::flash('request', 'Your request will be responded to shortly.');
         return redirect()->back();
     }
