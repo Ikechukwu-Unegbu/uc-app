@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offer;
 use App\Models\Pending;
 use App\Models\Request as ModelsRequest;
 use App\Models\User;
@@ -29,6 +30,7 @@ class MiscController extends Controller
 
     public function invest(Request $req, $offerId){
         //var_dump($req->all());var_dump($offerId);die;
+        $date = date('Y-m-d h:i:s', time());
         $req->validate([
             'amount'=>'required'
         ]);
@@ -36,7 +38,9 @@ class MiscController extends Controller
         $pending->user_id = Auth::user()->id;
         $pending->amount = $req->amount;
         // $pending->recieved = 0;
+        $offer = Offer::find($offerId);
         $pending->offer_id = $offerId;
+        $pending->expiry = date('Y-m-d', strtotime($date. ' + '.$offer->dur_dig.' days'));
         $pending->save();
 
 

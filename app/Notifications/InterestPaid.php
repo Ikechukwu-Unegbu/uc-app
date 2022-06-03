@@ -45,8 +45,9 @@ class InterestPaid extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject('Interest Paid')
+                    ->line('Hello '. $this->user->name . ', your interest of %'. $this->investment->interest .' has been paid into your account.')
+                    ->action('login', url('/login'))
                     ->line('Thank you for using our application!');
     }
 

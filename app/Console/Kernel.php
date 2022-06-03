@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\Services\Schedule\Compensate;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,6 +18,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->call(function () {
+        //     DB::table('recent_users')->delete();
+        // })->daily();
+        $schedule->call(function(){
+            $compensate = new Compensate();
+            $due = $compensate->getAllDue();
+            $compensate->calculateInterest($due);
+        })->daily();
     }
 
     /**

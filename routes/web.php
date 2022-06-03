@@ -76,15 +76,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index
 Route::post('/profile/fund/now', [ProfileController::class, 'fund'])->name('profile.fund')->middleware(['auth']);
 
 Route::get('/test_email', [TestController::class, 'mailTesting']);
-
-Route::get('/test-email', function(){
-    $user = User::find(1);
- 
-    // return (new InvoicePaid($invoice))
-    //             ->toMail($invoice->user);
-   // $user->notify(new HelloUser());
-});
-
+Route::get('test-interest', [TestController::class, 'testInterestPayment']);
 
 require __DIR__.'/auth.php';
 
