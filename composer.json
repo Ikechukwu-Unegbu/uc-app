@@ -11,8 +11,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "symfony/http-client": "^6.0",
-        "symfony/mailgun-mailer": "^6.0",
-        "tcg/voyager": "^1.5"
+        "symfony/mailgun-mailer": "^6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
